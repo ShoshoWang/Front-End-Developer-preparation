@@ -29,7 +29,7 @@ class LinkedList {
        this.size = this.getLength();
     }
 
-    // Method
+    // Method 对链表的操作就是不要忘记头指针head,虚拟指针(pre cur next) 当前指针从头到尾遍历(如何往下走) 长度++
     append(element) {
         const node = new ListNode(element);
         if (this.head == null)
@@ -151,14 +151,6 @@ class LinkedList {
         return -1;
     }
 
-    deleted() {
-
-    }
-
-    indexOf() {
-
-    }
-
     getLength() {
         let count = 0;
         let node = this.head;
@@ -199,3 +191,31 @@ node1.next = node2;
 let list = new LinkedList(node1)
 list.append(node3);
 console.log(list.size); // 2
+
+
+// 对整个链表的操作
+function  reverseLinkedList(list,head,tail) {
+    if (list.size === 0 || head === null || tail === null){
+        return false;
+    }
+    else {
+        let cur = head,
+        pre = null;
+
+        while (cur !== tail) {
+            // 记录数据 修改数据
+            let next = cur.next;
+            cur.next = pre;
+
+            // 链表往下走
+            pre = cur;
+            cur = next;
+
+        }
+        //  最后一个指针
+        if(cur === tail) {
+            tail.next = pre;
+        }
+    }
+
+}
